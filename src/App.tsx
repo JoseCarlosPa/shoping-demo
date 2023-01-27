@@ -7,6 +7,7 @@ import { HashRouter, Switch, Route } from "react-router-dom";
 import './assets/main.css'
 import chapp from './assets/chapp-logo.png'
 
+
 const App: React.FC = () => {
   const [cartItems, setCartItems] = useState<any>([]);
   const [show, setShow] = useState<boolean>(false);
