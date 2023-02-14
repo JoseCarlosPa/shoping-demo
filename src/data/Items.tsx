@@ -3,15 +3,16 @@ import styled from "styled-components";
 import theSun from "../images/sun.jpg";
 import theMoon from "../images/moon.jpg";
 import mercury from "../images/mercury.png";
-import venus from "../images/venus.jpg";
-import mars from "../images/mars.jpg";
-import jupiter from "../images/jupiter.jpg";
-import saturn from "../images/saturn.jpg";
-import uranus from "../images/uranus.jpg";
-import neptune from "../images/neptune.jpg";
-import pluto from "../images/pluto.jpg";
-import halleysComet from "../images/halley's_comet.jpg";
-import orionsBelt from "../images/orion's_belt.jpg";
+import lechuga from "../images/lechuga.jpg";
+import pepino from "../images/pepino.jpg";
+import jitomate from "../images/jitomate.jpg";
+import huevo from "../images/huevo.jpg";
+import chile from "../images/chile.jpg";
+import champiñon from "../images/champiñones.jpg";
+import cebolla from "../images/cebolla.jpg";
+import leche from "../images/leche.jpg";
+import pan from "../images/pan_de_caja.jpg";
+import hielo from "../images/hielo.jpg";
 import ShopItem from "./shopItem";
 
 const Div = styled.div`
@@ -36,74 +37,74 @@ interface PlanetProps {
 const Items: React.FC<CartItems> = ({ cartItems, setCartItems }) => {
   const planets: Array<PlanetProps> = [
     {
-      name: "The moon",
-      src: theMoon,
+      name: "Bolsa de hielo grande",
+      src: hielo,
       price: 100,
       id: 1,
     },
     {
-      name: "Mercury",
-      src: mercury,
-      price: 200,
+      name: "Bolsa de hielo mediana",
+      src: hielo,
+      price: 50,
       id: 2,
     },
     {
-      name: "Venus",
-      src: venus,
-      price: 500,
+      name: "Bolsa de hielo chica",
+      src: hielo,
+      price: 30,
       id: 3,
     },
     {
-      name: "Mars",
-      src: mars,
+      name: "huevo",
+      src: huevo,
       price: 400,
       id: 4,
     },
     {
-      name: "Jupiter",
-      src: jupiter,
+      name: "Chile",
+      src: chile,
       price: 1100,
       id: 5,
     },
     {
-      name: "Saturn",
-      src: saturn,
+      name: "Cebolla",
+      src: cebolla,
       price: 1000,
       id: 6,
     },
     {
-      name: "Uranus",
-      src: uranus,
+      name: "Jitomate",
+      src: jitomate,
       price: 800,
       id: 7,
     },
     {
-      name: "Neptune",
-      src: neptune,
+      name: "Pepino",
+      src: pepino,
       price: 900,
       id: 8,
     },
     {
-      name: "Pluto",
-      src: pluto,
+      name: "Lechuga",
+      src: lechuga,
       price: 450,
       id: 9,
     },
     {
-      name: "Sun",
-      src: theSun,
+      name: "Champiñones",
+      src: champiñon,
       price: 3000,
       id: 10,
     },
     {
-      name: "A Comet",
-      src: halleysComet,
+      name: "Leche",
+      src: leche,
       price: 50,
       id: 11,
     },
     {
-      name: "Orion's Belt",
-      src: orionsBelt,
+      name: "Pan de caja",
+      src: pan,
       price: 900,
       id: 12,
     },
