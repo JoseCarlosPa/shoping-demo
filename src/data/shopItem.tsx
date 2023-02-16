@@ -41,7 +41,10 @@ interface ItemKeys {
 }
 
 const ShopItem: React.FC<ItemKeys> = ({ planet, cartItems, setCartItems }) => {
+  const [counter, setCounter] = React.useState(0);
+
   const addToCart = (item: any) => {
+    setCounter(prev => prev + 1);
     let itemExists = cartItems.find((cartItem) => cartItem.id === item.id);
     if (itemExists) {
       setCartItems(
@@ -56,14 +59,38 @@ const ShopItem: React.FC<ItemKeys> = ({ planet, cartItems, setCartItems }) => {
     }
   };
 
+  const minusToCart = (item: any) => {
+    if(counter >=1){
+      setCounter(prev => prev - 1);
+      let itemExists = cartItems.find((cartItem) => cartItem.id === item.id);
+      if (itemExists) {
+        setCartItems(
+          cartItems.map((cartItem) =>
+            cartItem.id === item.id
+              ? { ...itemExists, quantity: itemExists.quantity - 1 }
+              : cartItem
+          )
+        );
+      } else {
+        setCartItems([...cartItems, { ...item, quantity: 1 }]);
+      }
+    }
+
+  };
+
+
   return (
     <ItemDiv>
       <h2>
         {planet.name}, ${planet.price}
       </h2>
       <div>
+        <p>{counter}</p>
         <img src={planet.src} alt={planet.name} height="200px" width="200px" />
       </div>
+      <button onClick={() => minusToCart(planet)} style={{ fontWeight: "bold" }}>
+        - Quitar
+      </button>
       <button onClick={() => addToCart(planet)} style={{ fontWeight: "bold" }}>
         + Agregar
       </button>
