@@ -31,7 +31,7 @@ const Shop: React.FC<CartItems> = ({ cartItems, setCartItems }) => {
   return (
     <>
       <Div>
-        <h1>
+        <h1 >
           <BiShoppingBag /> DEMO
         </h1>
         <Items cartItems={cartItems} setCartItems={setCartItems} />

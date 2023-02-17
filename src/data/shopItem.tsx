@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import styled from "styled-components";
 
 const ItemDiv = styled.div`
@@ -27,6 +27,7 @@ const ItemDiv = styled.div`
     letter-spacing: 1px;
     transition: 0.3s ease;
     width: 100%;
+
     &:hover {
       background: #1b7fbd;
       color: white;
@@ -40,8 +41,16 @@ interface ItemKeys {
   setCartItems: React.Dispatch<any>;
 }
 
-const ShopItem: React.FC<ItemKeys> = ({ planet, cartItems, setCartItems }) => {
+const ShopItem: React.FC<ItemKeys> = ({planet, cartItems, setCartItems}) => {
   const [counter, setCounter] = React.useState(0);
+
+  useEffect(() => {
+    // get the item from the cart
+    let itemExists = cartItems.find((cartItem) => cartItem.id === planet.id);
+    if (itemExists) {
+      setCounter(itemExists.quantity);
+    }
+  }, [cartItems, planet.id])
 
   const addToCart = (item: any) => {
     setCounter(prev => prev + 1);
@@ -50,29 +59,29 @@ const ShopItem: React.FC<ItemKeys> = ({ planet, cartItems, setCartItems }) => {
       setCartItems(
         cartItems.map((cartItem) =>
           cartItem.id === item.id
-            ? { ...itemExists, quantity: itemExists.quantity + 1 }
+            ? {...itemExists, quantity: itemExists.quantity + 1}
             : cartItem
         )
       );
     } else {
-      setCartItems([...cartItems, { ...item, quantity: 1 }]);
+      setCartItems([...cartItems, {...item, quantity: 1}]);
     }
   };
 
   const minusToCart = (item: any) => {
-    if(counter >=1){
+    if (counter >= 1) {
       setCounter(prev => prev - 1);
       let itemExists = cartItems.find((cartItem) => cartItem.id === item.id);
       if (itemExists) {
         setCartItems(
           cartItems.map((cartItem) =>
             cartItem.id === item.id
-              ? { ...itemExists, quantity: itemExists.quantity - 1 }
+              ? {...itemExists, quantity: itemExists.quantity - 1}
               : cartItem
           )
         );
       } else {
-        setCartItems([...cartItems, { ...item, quantity: 1 }]);
+        setCartItems([...cartItems, {...item, quantity: 1}]);
       }
     }
 
@@ -85,17 +94,18 @@ const ShopItem: React.FC<ItemKeys> = ({ planet, cartItems, setCartItems }) => {
         {planet.name}, ${planet.price}
       </h2>
       <div>
-        <p>{counter}</p>
-        <img src={planet.src} alt={planet.name} height="200px" width="200px" />
+        <p className="fs-3">{counter}</p>
+        <img src={planet.src} alt={planet.name} height="200px" width="200px"/>
       </div>
-      <button onClick={() => minusToCart(planet)} style={{ fontWeight: "bold" }}>
+      <button onClick={() => minusToCart(planet)} style={{fontWeight: "bold"}}>
         - Quitar
       </button>
-      <button onClick={() => addToCart(planet)} style={{ fontWeight: "bold" }}>
+      <button onClick={() => addToCart(planet)} style={{fontWeight: "bold"}}>
         + Agregar
       </button>
-    </ItemDiv>
-  );
+</ItemDiv>
+)
+  ;
 };
 
 export default ShopItem;
