@@ -1,7 +1,8 @@
-import React from "react";
+import React, {useEffect} from "react";
 import Items from "../data/Items";
 import styled from "styled-components";
 import { BiShoppingBag } from "react-icons/bi";
+import {getAllProducts} from "../utility/getProducts";
 
 const Div = styled.div`
   width: 60%;
@@ -23,10 +24,38 @@ interface CartItems {
 }
 
 const Shop: React.FC<CartItems> = ({ cartItems, setCartItems }) => {
+
+  const [cartCount, setCartCount] = React.useState(0);
+  const [total, setTotal] = React.useState(0);
+
   const title = document.getElementById("title");
   if (title !== null) {
     title.innerHTML = "DEMO | Productos";
   }
+
+  const getProd = async () => {
+    try {
+      await getAllProducts();
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+
+  useEffect(()=>{
+    try{
+      let sum = cartItems.reduce((acc, item:any) => acc + item.quantity, 0);
+      setCartCount(sum);
+
+      // get the sum of the total
+      let totalSum = cartItems.reduce((acc, item:any) => acc + item.quantity * item.price, 0);
+      setTotal(totalSum);
+
+
+    }catch (e) {
+      console.log(e);
+    }
+  },[cartItems])
 
   return (
     <>
@@ -34,6 +63,15 @@ const Shop: React.FC<CartItems> = ({ cartItems, setCartItems }) => {
         <h1 >
           <BiShoppingBag /> DEMO
         </h1>
+        <hr />
+        <div className="row">
+          <div className="col-6">
+            <h3 className="text-center">Productos: {cartCount}</h3>
+          </div>
+          <div className="col-6">
+            <h3 className="text-center">Total: $ {total}</h3>
+          </div>
+        </div>
         <Items cartItems={cartItems} setCartItems={setCartItems} />
       </Div>
     </>

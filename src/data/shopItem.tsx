@@ -93,7 +93,7 @@ const ShopItem: React.FC<ItemKeys> = ({planet, cartItems, setCartItems}) => {
       <h2>
         {planet.name}, ${planet.price}
       </h2>
-      <div>
+      <div className="text-center">
         <p className="fs-3">{counter}</p>
         <img src={planet.src} alt={planet.name} height="200px" width="200px"/>
       </div>
