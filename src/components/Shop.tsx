@@ -66,7 +66,7 @@ const Shop: React.FC<CartItems> = ({ cartItems, setCartItems }) => {
         <hr />
         <div className="row">
           <div className="col-6">
-            <h3 className="text-center">Productos: {cartCount}</h3>
+            <h3 className="text-center">Items: {cartCount}</h3>
           </div>
           <div className="col-6">
             <h3 className="text-center">Total: $ {total}</h3>
