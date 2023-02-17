@@ -41,6 +41,10 @@ const Shop: React.FC<CartItems> = ({ cartItems, setCartItems }) => {
     }
   }
 
+  useEffect(() => {
+    getProd();
+    },[])
+
 
   useEffect(()=>{
     try{
