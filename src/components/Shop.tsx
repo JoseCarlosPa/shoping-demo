@@ -3,6 +3,8 @@ import Items from "../data/Items";
 import styled from "styled-components";
 import { BiShoppingBag } from "react-icons/bi";
 import {clientExample} from "../utility/fakeData";
+import {getAllProducts} from "../utility/getProducts";
+import {useParams} from "react-router-dom";
 
 const Div = styled.div`
   width: 60%;
@@ -27,13 +29,25 @@ const Shop: React.FC<CartItems> = ({ cartItems, setCartItems }) => {
 
   const [cartCount, setCartCount] = React.useState(0);
   const [total, setTotal] = React.useState(0);
-
+  const {id} = useParams<{id:string}>()
 
 
   const title = document.getElementById("title");
   if (title !== null) {
     title.innerHTML = "DEMO | Productos";
   }
+  
+  useEffect(() => {
+    const getProducts = async () => {
+      try {
+        await getAllProducts('d93488d2-bf4c-11ec-981d-005056ac3ab7',id);
+      } catch (e) {
+        console.log(e);
+      }
+    }
+    getProducts();
+  },[id])
+
 
 
   useEffect(()=>{
@@ -51,7 +65,6 @@ const Shop: React.FC<CartItems> = ({ cartItems, setCartItems }) => {
     }
   },[cartItems])
 
-  const data = clientExample
   return (
     <>
       <Div>

@@ -1,7 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { BiPlanet } from "react-icons/bi";
 import BurgerMenu from "./BurgerMenu";
 
 const Navbar = styled.nav`
@@ -18,10 +16,6 @@ const Navbar = styled.nav`
   }
 `;
 
-const H2 = styled.h2`
-  font-size: 2rem;
-  color: white;
-`;
 
 interface Items {
   cartItems: never[];

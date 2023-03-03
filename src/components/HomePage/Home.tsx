@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { Link } from "react-router-dom";
 import Footer from "../Footer";
 import styled from "styled-components";
@@ -6,6 +6,7 @@ import space from "./images/space.jpeg";
 import stars from "./images/stars.jpg";
 import mountain from "./images/mountain.jpg";
 import moonAndStars from "./images/moon_and_stars.jpg";
+import {getAllProducts} from "../../utility/getProducts";
 
 const HeroDiv = styled.div`
   min-height: 50vh;

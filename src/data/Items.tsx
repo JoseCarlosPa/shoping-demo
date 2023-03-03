@@ -1,15 +1,5 @@
 import React, {useEffect} from "react";
 import styled from "styled-components";
-import lechuga from "../images/lechuga.jpg";
-import pepino from "../images/pepino.jpg";
-import jitomate from "../images/jitomate.jpg";
-import huevo from "../images/huevo.jpg";
-import chile from "../images/chile.jpg";
-import champiñon from "../images/champiñones.jpg";
-import cebolla from "../images/cebolla.jpg";
-import leche from "../images/leche.jpg";
-import pan from "../images/pan_de_caja.jpg";
-import hielo from "../images/hielo.jpg";
 import noimage from "../images/noimage.jpg";
 import ShopItem from "./shopItem";
 import {clientExample} from "../utility/fakeData";
