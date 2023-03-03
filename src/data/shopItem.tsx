@@ -91,11 +91,14 @@ const ShopItem: React.FC<ItemKeys> = ({planet, cartItems, setCartItems}) => {
   return (
     <ItemDiv>
       <h2>
-        {planet.name}, ${planet.price}
+        {planet.name} | ${planet.price}
       </h2>
       <div className="text-center">
         <p className="fs-3">{counter}</p>
         <img src={planet.src} alt={planet.name} height="200px" width="200px"/>
+      </div>
+      <div className="">
+        <p className="fs-5">Clave: {planet.clave}</p>
       </div>
       <button onClick={() => minusToCart(planet)} style={{fontWeight: "bold"}}>
         - Quitar

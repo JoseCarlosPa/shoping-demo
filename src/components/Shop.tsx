@@ -2,7 +2,7 @@ import React, {useEffect} from "react";
 import Items from "../data/Items";
 import styled from "styled-components";
 import { BiShoppingBag } from "react-icons/bi";
-import {getAllProducts} from "../utility/getProducts";
+import {clientExample} from "../utility/fakeData";
 
 const Div = styled.div`
   width: 60%;
@@ -28,22 +28,12 @@ const Shop: React.FC<CartItems> = ({ cartItems, setCartItems }) => {
   const [cartCount, setCartCount] = React.useState(0);
   const [total, setTotal] = React.useState(0);
 
+
+
   const title = document.getElementById("title");
   if (title !== null) {
     title.innerHTML = "DEMO | Productos";
   }
-
-  const getProd = async () => {
-    try {
-      await getAllProducts();
-    } catch (e) {
-      console.log(e);
-    }
-  }
-
-  useEffect(() => {
-    getProd();
-    },[])
 
 
   useEffect(()=>{
@@ -61,11 +51,12 @@ const Shop: React.FC<CartItems> = ({ cartItems, setCartItems }) => {
     }
   },[cartItems])
 
+  const data = clientExample
   return (
     <>
       <Div>
         <h1 >
-          <BiShoppingBag /> DEMO
+          <BiShoppingBag /> {clientExample.dato.nombre}
         </h1>
         <hr />
         <div className="row">
